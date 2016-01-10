@@ -24,7 +24,7 @@ var morganLogger = function (app, express) {
  app.use(morgan('dev'));
  app.use(bodyParser.urlencoded({extended: true}));
  app.use(bodyParser.json());
- app.use(express.static('client'));
+ app.use(express.static(__dirname + '/../client'));
 };
 
 morganLogger(app, express);
@@ -155,6 +155,8 @@ io.on('connection', function (client) {
 
 
 });
+
+module.exports = server;
 
 // app.get('/api/stats', gameController.allStats);
 
