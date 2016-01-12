@@ -20,6 +20,7 @@ var app = angular.module('SD', [])
     $scope.playerJoined = false;
     $scope.playerReadied = false;
     $scope.isLeader = false;
+    //$scope.isFalse = false;
 
     // when player enters a name, update the $scope
     $scope.enterPlayerName = function () {
@@ -51,11 +52,12 @@ var app = angular.module('SD', [])
     //console.log("in findLeader", gameObject.players[0].isLeader);
 
     for(var i = 0; i < gameObject.players.length;i++){
-      $scope.isLeader = gameObject.players[i].isLeader;
+      $scope.isLeader = $scope.thisPlayer.isLeader;
       if(gameObject.players[i].isLeader){
         $scope.leader = gameObject.players[i].name;
       }
     }
+    //console.log("isLeader", $scope.isLeader);
   }
 
     $scope.toggleRole = function () {
@@ -254,7 +256,7 @@ var app = angular.module('SD', [])
 
     socket.on('game-over', function (gameStateObject) {
       $scope.gameState = gameStateObject;
-      addStats(gameStateobject);
+      //addStats(gameStateobject)
       if ($scope.gameState.winner) {
         $scope.messageAlert = 'Good team wins!';
       } else {
@@ -273,32 +275,32 @@ var app = angular.module('SD', [])
 
     /* GAME STATS TRACKER. Should probably put this somewhere in a services re: Kevin */
 
-    var getAllStats = function () {
-      return $http({
-        method: "GET",
-        url: "/api/stats"
-      }).then(function (resp) {
-      return resp.data;
-      });
-    };
-    var addStats = function (gameStateObject) {
-      return $http({
-        method: 'POST',
-        url: "/api/stats",
-        data: gameStateObject 
-      })
-      .then(function (resp) {
-        return resp;
-      });
-    };
+    // var getAllStats = function () {
+    //   return $http({
+    //     method: "GET",
+    //     url: "/api/stats"
+    //   }).then(function (resp) {
+    //   return resp.data;
+    //   });
+    // };
+    // var addStats = function (gameStateObject) {
+    //   return $http({
+    //     method: 'POST',
+    //     url: "/api/stats",
+    //     data: gameStateObject 
+    //   })
+    //   .then(function (resp) {
+    //     return resp;
+    //   });
+    // };
 
-    $scope.getAll = function () {
-      getAllStats().then(function (res) {
-        $scope.stats = res;
-      })
-    }
+    // $scope.getAll = function () {
+    //   getAllStats().then(function (res) {
+    //     $scope.stats = res;
+    //   })
+    // }
 
-    $scope.getAll();
+    // $scope.getAll();
 
 });
 

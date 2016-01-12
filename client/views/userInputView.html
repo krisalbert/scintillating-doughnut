@@ -3,15 +3,15 @@
       <div class="voteForTeam" ng-show="gameState.votingForTeam" style="border:1px solid black;">
         Would you like this team to go on a quest together?<br>
         <div class="voteYesForTeam" ng-click="voteYesForTeam()"><img src="/assets/pass.png"></div>
-        <div class="voteNoForTeam"  ng-click="voteNoForTeam()"><img src="/assets/no.png"></div>
+        <div class="voteNoForTeam" ng-click="voteNoForTeam()"><img src="/assets/no.png"></div>
 <!-- 
         <button ng-click="voteYesForTeam()">Aye Aye</button>
         <button ng-click="voteNoForTeam()">Nay Nay</button> -->
       </div>
 
       <div class="voteForQuest" ng-show="gameState.votingForQuest" style="clear:both; border:1px solid black">
-        <img src="/assets/success.png"><br>
-        <div class="voteYesForQuest" ng-click="voteYesForQuest()">Let us conquer this quest</div>
+        <br>
+        <div class="voteYesForQuest" ng-click="voteYesForQuest()"><img src="/assets/success.png"></div>
         <div class="voteNoForQuest" ng-click="voteNoForQuest()"><img src="/assets/fail.png"></div>
 
 
